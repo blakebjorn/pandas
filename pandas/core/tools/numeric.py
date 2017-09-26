@@ -135,6 +135,8 @@ def to_numeric(arg, errors='raise', downcast=None):
     except Exception:
         if errors == 'raise':
             raise
+        elif errors == 'coerce' and not is_numeric_dtype(values):
+            raise
 
     # attempt downcast only if the data has been successfully converted
     # to a numerical dtype and if a downcast method has been specified
